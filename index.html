@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script>
+    const root = document.getElementById('root');
+    // 두번째 인자로 span태그에 넣을 프로퍼티들을 정의
+    // 세번째 인자로 내용을 넣음 
+    const span = React.createElement('span',{id:"span-id", style:{color:"red"}},"iam span")
+    ReactDOM.render(span,root)
+  </script>
+</html>
