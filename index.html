@@ -6,20 +6,19 @@
   </body>
   <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-  <script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel" >
     const root = document.getElementById('root');
-    // 두번째 인자로 span태그에 넣을 프로퍼티들을 정의
-    // 세번째 인자로 내용을 넣음 
-    const h3 = React.createElement('h3',{
-      onMouseEnter: () => {
+    const Title = (<h3 id="title" onMouseEnter={() => 
         console.log('onmouseenter')
-      }
-    },"iam span")
-    const btn = React.createElement('button',{
-      onClick: ()=>{console.log('clickclick')}
-    },"Click Me")
-    // div내에 span,btn순으로 렌더링할떄 배열로 추가
-    const container = React.createElement('div',null,[h3,btn])
+      }>iam span</h3>);
+      
+    const Button = (<button 
+      style={{backgroundColor:"tomato"}} 
+      onClick={()=>console.log('clickclick')}
+      >Click Me</button>)
+
+    const container = React.createElement('div',null,[Title,Button])
     ReactDOM.render(container,root)
   </script>
 </html>
