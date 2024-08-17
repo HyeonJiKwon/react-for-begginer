@@ -9,21 +9,16 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel" >
     const root = document.getElementById('root');
-    let counter = 0; 
-    function countUp(){
-      counter=counter+1;
-      // counter가 countUp할때마다 리랜더링
-      render()
-    }
-  function render(){
-    ReactDOM.render(<Container/>,root)
 
-  }
-    const Container =()=>( 
-      <div>
+    const App =()=> {
+      const [counter,modifier] = React.useState(0);
+      return(
+        <div>
         <h3>total click: {counter}</h3>
-        <button onClick={countUp}>Click Me</button>
-      </div>)
-    render()
+        <button >Click Me</button>
+      </div>
+    )};
+    ReactDOM.render(<App/>,root)
+
   </script>
 </html>
