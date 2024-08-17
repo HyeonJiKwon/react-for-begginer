@@ -10,7 +10,16 @@
     const root = document.getElementById('root');
     // 두번째 인자로 span태그에 넣을 프로퍼티들을 정의
     // 세번째 인자로 내용을 넣음 
-    const span = React.createElement('span',{id:"span-id", style:{color:"red"}},"iam span")
-    ReactDOM.render(span,root)
+    const h3 = React.createElement('h3',{
+      onMouseEnter: () => {
+        console.log('onmouseenter')
+      }
+    },"iam span")
+    const btn = React.createElement('button',{
+      onClick: ()=>{console.log('clickclick')}
+    },"Click Me")
+    // div내에 span,btn순으로 렌더링할떄 배열로 추가
+    const container = React.createElement('div',null,[h3,btn])
+    ReactDOM.render(container,root)
   </script>
 </html>
