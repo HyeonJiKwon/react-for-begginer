@@ -11,19 +11,24 @@
     const root = document.getElementById('root');
 
     const App =()=> {
-      const [min, setMin ] = React.useState();
+      const [min, setMin ] = React.useState(0);
       const onChange=(event)=>{
         // console.log(event.target.value)
         setMin(event.target.value);
       }
+      const reset = ()=> setMin(0)
       return(
         <div>
           <h1>Super converter</h1>
-          <label htmlFor="min">분</label>
-          <input id="min" placeholder="min" type="number" value={min} onChange={onChange}/>
-          <h4>{min}</h4>
-          <label htmlFor="hour">시</label>
-          <input id="hour" placeholder="hour" type="number"/>
+          <div>
+            <label htmlFor="min">분</label>
+            <input id="min" placeholder="min" type="number" value={min} onChange={onChange}/>
+          </div>
+          <div>
+            <label htmlFor="hour" >시</label>
+            <input id="hour" value={Math.round(min/60)} placeholder="hour" type="number" disabled/>
+          </div>
+          <button onClick={reset}>Reset</button>
         </div>
     )};
     ReactDOM.render(<App/>,root)
