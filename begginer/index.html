@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <!-- <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script> -->
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script type="text/babel" >
+    const root = document.getElementById('root');
+    function Btn({text,changeValue, fontSize = 16}) {
+      console.log(text,'was render')
+      return <button 
+        onClick={changeValue}
+        style={{
+          backgroundColor: 'tomato',
+          color: 'white',
+          padding: '10px 20px',
+          border: 0, 
+          borderRadius: 10,
+          fontSize: fontSize
+        }}>
+      {text}
+      </button>
+    }
+    Btn.propTypes={
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number,
+    };
+    const Memorized = React.memo(Btn);
+
+    const App =()=> {
+      const [value, setValue] = React.useState("Save");
+      const changeValue = () => setValue('저장')
+      return(
+        <div>
+          <Memorized text={value} changeValue={changeValue}/>
+          <Memorized text="Continue" />
+          <Btn text="Confirm" fontSize={18}/>
+          <Btn text="nonSizeConfirm" />
+        </div>
+    )};
+    ReactDOM.render(<App/>,root)
+
+  </script>
+</html>
