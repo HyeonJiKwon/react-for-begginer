@@ -9,26 +9,32 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel" >
     const root = document.getElementById('root');
-    function Btn({text, bigFont}) {
+    function Btn({text,changeValue}) {
+      console.log(text,'was render')
       return <button 
+        onClick={changeValue}
         style={{
           backgroundColor: 'tomato',
           color: 'white',
           padding: '10px 20px',
           border: 0, 
           borderRadius: 10,
-          fontSize: bigFont ? 13 : 16
+          fontSize: 16
         }}>
       {text}
       </button>
     }
 
+    const Memorized = React.memo(Btn);
+
     const App =()=> {
+      const [value, setValue] = React.useState("Save");
+      const changeValue = () => setValue('저장')
       return(
         <div>
-          <Btn text="Save" bigFont={false} />
-          <Btn text="Continue" bigFont={true}/>
-          <Btn text="Confirm"/>
+          <Memorized text={value} changeValue={changeValue}/>
+          <Memorized text="Continue" />
+          <Btn text="Confirm" />
         </div>
     )};
     ReactDOM.render(<App/>,root)
