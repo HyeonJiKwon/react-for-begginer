@@ -2,23 +2,26 @@ import Button from "./Button";
 import styles from "./App.module.css"; 
 import { useEffect, useState } from "react";
 
-function Hello() {
-  useEffect(()=>{
-    console.log('effectFn: creat')
-    // 컴포넌트가 destroy되는 시점에 실행됨
-    return ()=>console.log('effectFn: destroy');
-  },[]);
-  return (
-    <h1>hello</h1>
-  );
-}
 function App() {
-  const [showing , setShowing] = useState(false)
-  
+  const [todo , setTodo] = useState('');
+  const [todos , setTodos] = useState([]);
+
+  const onChange = (e)=>{
+    setTodo(e.target.value)
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if(todo === '') return;
+    setTodos(currentArr=>[todo, ...currentArr]);
+    setTodo('');
+  } 
+  console.log(todo,todos)
   return (
     <div>
-      {showing ? <Hello></Hello> : null}
-      <button onClick={()=>setShowing((p)=>!p)}>{showing ? 'hide' :'show'}</button>
+      <form onSubmit={onSubmit}>
+        <input value={todo} onChange={onChange} type="text" placeholder="Write here" />
+        <button>ADD</button>
+      </form>
     </div>
   );
 }
