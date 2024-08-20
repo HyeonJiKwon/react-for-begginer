@@ -15,13 +15,21 @@ function App() {
     setTodos(currentArr=>[todo, ...currentArr]);
     setTodo('');
   } 
-  console.log(todo,todos)
+
   return (
     <div>
       <form onSubmit={onSubmit}>
         <input value={todo} onChange={onChange} type="text" placeholder="Write here" />
         <button>ADD</button>
       </form>
+      <hr/>
+      <ul>
+        {
+          todos.map((item, idx) => 
+            <li key={idx}>{item}</li>
+          )
+        }
+      </ul>
     </div>
   );
 }
