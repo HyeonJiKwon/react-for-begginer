@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Movie from "./components/Movie";
 
-function App() {
+function Home() {
   const [loading , setLoading] = useState(true);
   const [movies , setMovies] = useState([]);
 
@@ -17,8 +17,21 @@ function App() {
     getMovies()
   },[]);
   return (
-    null
-  )
+    <div>
+      <h1>movies! total:{movies.length}</h1>
+      <h2>{loading ? <strong>Loading....~</strong>
+      : <div>{movies.map((movie)=>
+          <Movie 
+            medium_cover_image={movie.medium_cover_image} 
+            title={movie.title} 
+            summary={movie.summary}
+            genres={movie.genres} 
+            key={movie.id}
+          />)}
+        </div> }
+      </h2>
+    </div>
+  );
 }
 
-export default App;
+export default Home;
