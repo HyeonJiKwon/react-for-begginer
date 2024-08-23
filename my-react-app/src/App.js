@@ -14,7 +14,7 @@ function App() {
       <Route path='/hello'>
         <h1>hello</h1>
       </Route>
-      <Route path='/movie'>
+      <Route path='/movie/:id'>
         <Detail/>
       </Route>
       <Route path="/">

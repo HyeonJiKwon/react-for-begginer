@@ -22,6 +22,7 @@ function Home() {
       <h2>{loading ? <strong>Loading....~</strong>
       : <div>{movies.map((movie)=>
           <Movie 
+            id={movie.id}
             medium_cover_image={movie.medium_cover_image} 
             title={movie.title} 
             summary={movie.summary}
